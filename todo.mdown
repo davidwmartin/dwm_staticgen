@@ -1,0 +1,18 @@
+# TODO 
+
+## Development
+
+* Autoprefixer
+* Sourcemaps
+* HMTL templating
+* gulp-modernizer
+* closer look at imagemin settings
+* useref for css files
+
+
+## Beyond Gulp
+
+* Bower
+	- style dependencies (dwmframe and normalize)
+* Yeoman generator
+	- multiple options for HTML templating engine 
