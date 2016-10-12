@@ -1,18 +1,36 @@
 # TODO 
 
+## Cleanup
+
+* better meta information in package.json
+* licensing 
+
 ## Development
 
-* Autoprefixer
-* Sourcemaps
+### Assets
+
+* js -- copy sourcemap to dist folder on build?
+* css linting?
+* js -- linting not working
+	- http://codeutopia.net/docs/eslint/
+	- https://www.npmjs.com/package/gulp-eslint 
+
+
+### HTML
+
 * HMTL templating
 * gulp-modernizer
-* closer look at imagemin settings
-* useref for css files
 
+### Gulp Config
+
+* take a look at [gulp changed](https://www.npmjs.com/package/gulp-changed)
+* deploy w/rsync -- https://www.npmjs.com/package/gulp-rsync
+* gzip dist assets?
 
 ## Beyond Gulp
 
 * Bower
 	- style dependencies (dwmframe and normalize)
 * Yeoman generator
-	- multiple options for HTML templating engine 
+	- multiple options for HTML templating engine
+* Strategy for inlining SVG images
