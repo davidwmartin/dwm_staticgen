@@ -1,0 +1,14 @@
+// http://eslint.org/docs/user-guide/configuring
+{
+    "extends": "eslint:recommended",
+    "rules": {
+        "no-console": "warn"
+    },
+    "globals": {
+        "$": false
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    }
+}

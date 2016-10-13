@@ -12,18 +12,14 @@ var gulp = require('gulp'),
 		autoprefixer = require('gulp-autoprefixer'), 
 		sourcemaps = require('gulp-sourcemaps'), 
 		eslint = require('gulp-eslint');
-		;
 
 // configure watch task
-gulp.task('watch', ['browserSync', 'sass', 'scripts'], function(){
-
+gulp.task('watch', function(){
 	gulp.watch('app/assets/scss/**/*.scss', ['sass']);
-
 	gulp.watch('app/**/*.html', browserSync.reload);
-
-	gulp.watch('app/assets/scripts/**/*.js', browserSync.reload);
-
+	gulp.watch('app/assets/scripts/**/*.js', ['scripts']);
 });
+
 
 // compile sass files
 gulp.task('sass', function(){
@@ -32,12 +28,10 @@ gulp.task('sass', function(){
 
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
-		// TODO -- sourcemap data to it's own file?
-		.pipe(sourcemaps.write())
-		// TODO -- autoprefixer in usemin task to autoprefix external stylesheets?
 		.pipe(autoprefixer({
 			browsers:['last 2 versions']
 		}))
+		.pipe(sourcemaps.write("."))
 		.pipe(gulp.dest('.tmp/styles'))
 		.pipe(browserSync.reload({
 			stream: 	true
@@ -46,7 +40,7 @@ gulp.task('sass', function(){
 });
 
 // grab js files, sourcemap them, output to tmp directory
-gulp.task('scripts', function(){
+gulp.task('scripts', ['lint'], function(){
 
 	return gulp.src('app/assets/scripts/**/*.js')
 		.pipe(sourcemaps.init())
@@ -61,16 +55,11 @@ gulp.task('scripts', function(){
 // Lint JS files with ESLINT
 gulp.task('lint', function(){
 
-	return gulp.src(['app/scripts/**/*.js', '!node_modules/**'])
-		// .pipe(browserSync.reload({
-		// 		stream: true, 
-		// 		once: true
-		// 	}))
+	return gulp.src(['**/*.js', '!node_modules/**'])
 		.pipe(eslint({
-			configFile: 'config/.eslintrc'
+			configFile:'config/eslint.json'
 		}))
 		.pipe(eslint.format())
-		// .pipe(gulp.dest('app/scripts'))
 });
 
 // useref combines assets into a single file after piping through minifiers based on file extension
@@ -87,12 +76,12 @@ gulp.task('useref', function(){
 });
 
 // copies fonts folder -- uncomment if serving custom fonts, and add to build task below
-// gulp.task('fonts', function() {
+gulp.task('fonts', function() {
 
-//   return gulp.src('app/assets/fonts/**/*')
-//   	.pipe(gulp.dest('dist/fonts'));
+	return gulp.src('app/assets/fonts/**/*')
+		.pipe(gulp.dest('dist/fonts'));
 
-// })
+})
 
 // imagemin processes image files
 gulp.task('images', function(){
@@ -111,21 +100,14 @@ gulp.task('images', function(){
 
 // extras (favicon, robots.txt, other root-level html files, etc)
 gulp.task('extras', function() {
-  return gulp.src([
-    'app/*.*',
-    '!app/*.html'
-  ], {
-    dot: true
-  }).pipe(gulp.dest('dist'));
+	return gulp.src([
+		'app/*.*',
+		'!app/*.html'
+	], {
+		dot: true
+	}).pipe(gulp.dest('dist'));
 });
 
-
-// generic clean task
-gulp.task('clean', function() {
-	  
-	  runSequence('clean:dist', 'clean:cache')
-
-});
 
 // clean dist folder
 gulp.task('clean:dist', function(){
@@ -133,11 +115,16 @@ gulp.task('clean:dist', function(){
 	return del.sync('dist');
 
 });
-
 // delete locally cached images
 gulp.task('clean:cache', function () {
 
 	return cache.clearAll()
+
+});
+// generic clean task
+gulp.task('clean', function() {
+		
+		runSequence('clean:dist', 'clean:cache')
 
 });
 
@@ -145,8 +132,8 @@ gulp.task('clean:cache', function () {
 gulp.task('browserSync', function(){
 
 	browserSync.init({
+		port: 9000,
 		server: {
-			port: 9000,
 			baseDir: ['.tmp','app']
 		},
 	})
@@ -168,7 +155,7 @@ gulp.task('build', function(){
 	console.log('building dist');
 
 	// Note -- runsequence runs tasks separated by comma one-by-one, tasks in [] will be run at the same time
-	runSequence('clean', 'sass', 'lint',['useref', 'images', 'extras']);
+	runSequence('clean', 'sass',['useref', 'images', 'fonts', 'extras']);
 
 });
 

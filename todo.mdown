@@ -1,20 +1,17 @@
 # TODO 
 
-## Cleanup
+## Publish
 
 * better meta information in package.json
 * licensing 
+* add readme
+* semver / git tags
+* deploy to github
 
 ## Development
 
 ### Assets
-
-* js -- copy sourcemap to dist folder on build?
 * css linting?
-* js -- linting not working
-	- http://codeutopia.net/docs/eslint/
-	- https://www.npmjs.com/package/gulp-eslint 
-
 
 ### HTML
 
@@ -23,8 +20,12 @@
 
 ### Gulp Config
 
-* take a look at [gulp changed](https://www.npmjs.com/package/gulp-changed)
-* deploy w/rsync -- https://www.npmjs.com/package/gulp-rsync
+* autoprefix after usemin concat for greater control over external-asset prefixing?
+
+* Check Out:
+	- [gulp changed](https://www.npmjs.com/package/gulp-changed)
+	- [gulp load plugins](https://www.npmjs.com/package/gulp-load-plugins)
+	- [gulp rsync](https://www.npmjs.com/package/gulp-rsync)
 * gzip dist assets?
 
 ## Beyond Gulp
@@ -34,3 +35,8 @@
 * Yeoman generator
 	- multiple options for HTML templating engine
 * Strategy for inlining SVG images
+
+## Bugs
+
+* build fails if there are no style rules to compile (minor bug as this won't really ever happen)
+* does lint task trigger scripts task? causing the latter to run twice in certain cases? (not huge bug, but annoying)
