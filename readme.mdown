@@ -1,0 +1,30 @@
+# DWM / edG Design Static Site Generator
+
+A simple static website generator that utilizes npm & gulp. 
+
+Loosely, initially based on [this tutorial](https://css-tricks.com/gulp-for-beginners/), has since evolved. 
+
+## Overview
+
+* Preprocesses styles (sass)
+* Lints your JS (gulp-eslint)
+* Optimizes images (imageoptim)
+* bunch of other great things -- take a look at gulpfile.js
+
+## Usage
+
+Download / clone & npm install 
+
+"gulp serve" to serve
+
+"gulp build" to build -- outputs to dist folder
+
+## License: 
+
+Do whatever you want. Just let me know if you find it useful, and perhaps give me some credit in a code comment somewhere. 
+
+## Notes
+
+See todo.mdown for roadmap
+
+**Any questions? david.w.martin@me.com**

@@ -2,11 +2,7 @@
 
 ## Publish
 
-* better meta information in package.json
 * licensing 
-* add readme
-* semver / git tags
-* deploy to github
 
 ## Development
 

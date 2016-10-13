@@ -1,13 +1,4 @@
 {
-  "name": "static_site_gen",
-  "version": "1.0.0",
-  "description": "based on tutorial at: https://css-tricks.com/gulp-for-beginners/",
-  "main": "app/index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.17.1",
     "del": "^2.2.2",
