@@ -54,7 +54,7 @@ gulp.task('build', function(){
 // styles
 gulp.task('sass', function(){
 
-	return gulp.src('app/assets/scss/**/*.+(scss|sass)')
+	return gulp.src('app/assets/styles/**/*.+(scss|sass)')
 
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
@@ -119,7 +119,7 @@ gulp.task('pug', function(){
 
 // configure watch task
 gulp.task('watch', function(){
-	gulp.watch('app/assets/scss/**/*.scss', ['sass']);
+	gulp.watch('app/assets/styles/**/*.scss', ['sass']);
 	gulp.watch('app/**/*.html', browserSync.reload);
 	gulp.watch('app/views/**/*.pug', ['pug']);
 	gulp.watch('app/assets/scripts/**/*.js', ['scripts']);
