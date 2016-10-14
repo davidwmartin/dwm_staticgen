@@ -1,10 +1,11 @@
 # Changelog
 
-## Unreleased: 
+## Unreleased:
 
-*Master currently unstable -- changing how the views are handled / where the site serves from*
+## [0.0.2]
 
 * Add "pug" (formerly Jade) for view templating
+* Add gulp-data for use w/pug
 
 ## [0.0.1]
 

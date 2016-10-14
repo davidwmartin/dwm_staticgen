@@ -36,3 +36,4 @@
 
 * build fails if there are no style rules to compile (minor bug as this won't really ever happen)
 * does lint task trigger scripts task? causing the latter to run twice in certain cases? (not huge bug, but annoying)
+* server cuts out on pug error
