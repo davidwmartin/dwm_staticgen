@@ -30,7 +30,7 @@ var gulp = require('gulp'),
 // serve dev site
 gulp.task('serve', function(){
 
-	runSequence(['sass', 'scripts', 'browserSync', 'watch']);
+	runSequence(['sass', 'scripts', 'pug', 'browserSync'],'watch');
 
 });
 
@@ -97,12 +97,11 @@ gulp.task('lint', function(){
 
 gulp.task('pug', function(){
 	gulp.src('app/views/**/*.pug')
-		// .pipe(data(function(){
-		// 	// add data via json file
-		// 	// TODO -- ensure the below works, I'm winging it here. 
-		// 	return require('data/**/*.json');
-		// }))
-		.pipe(pug({}))
+		.pipe(data(function(){
+			// add data via json file
+			return require('./data/content.json');
+		}))
+		.pipe(pug())
 		.pipe(gulp.dest('.tmp/'))
 
 		.pipe(browserSync.reload({

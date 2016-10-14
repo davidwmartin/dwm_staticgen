@@ -13,7 +13,6 @@
 ### HTML
 
 * gulp-modernizer
-* ensure gulp-data implementation with pug works
 
 ### Gulp Config
 
