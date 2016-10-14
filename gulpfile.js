@@ -1,3 +1,8 @@
+
+/****** 
+** load plugins 
+******/
+
 var gulp = require('gulp'), 
 		sass = require('gulp-sass'), 
 		browserSync = require('browser-sync').create(), 
@@ -11,17 +16,42 @@ var gulp = require('gulp'),
 		runSequence = require('run-sequence'), 
 		autoprefixer = require('gulp-autoprefixer'), 
 		sourcemaps = require('gulp-sourcemaps'), 
-		eslint = require('gulp-eslint');
+		eslint = require('gulp-eslint'),
+		pug = require('gulp-pug'), 
+		data = require('gulp-data')
+;
 
-// configure watch task
-gulp.task('watch', function(){
-	gulp.watch('app/assets/scss/**/*.scss', ['sass']);
-	gulp.watch('app/**/*.html', browserSync.reload);
-	gulp.watch('app/assets/scripts/**/*.js', ['scripts']);
+
+
+/****** 
+** Primary Tasks
+******/
+
+// serve dev site
+gulp.task('serve', function(){
+
+	runSequence(['sass', 'scripts', 'browserSync', 'watch']);
+
 });
 
 
-// compile sass files
+// build production site
+gulp.task('build', function(){
+
+	console.log('building dist');
+
+	// Note -- runsequence runs tasks separated by comma one-by-one, tasks in [] will be run at the same time
+	runSequence('clean', 'sass',['useref', 'images', 'fonts', 'extras']);
+
+});
+
+
+
+/****** 
+** asset tasks 
+******/
+
+// styles
 gulp.task('sass', function(){
 
 	return gulp.src('app/assets/scss/**/*.+(scss|sass)')
@@ -51,7 +81,6 @@ gulp.task('scripts', ['lint'], function(){
 		}));
 
 });
-
 // Lint JS files with ESLINT
 gulp.task('lint', function(){
 
@@ -62,10 +91,60 @@ gulp.task('lint', function(){
 		.pipe(eslint.format())
 });
 
+/****** 
+** view tasks 
+******/
+
+gulp.task('pug', function(){
+	gulp.src('app/views/**/*.pug')
+		.pipe(data(function(){
+			// add data via json file
+			// TODO -- ensure the below works, I'm winging it here. 
+			return require('data/**/*.json');
+		}))
+		.pipe(pug({}))
+		.pipe(gulp.dest('.tmp/'));
+});
+
+// 
+// 
+// NOTE -- useref gets views from .tmp for build
+// 
+// 
+
+
+/****** 
+** server tasks 
+******/
+
+// configure watch task
+gulp.task('watch', function(){
+	gulp.watch('app/assets/scss/**/*.scss', ['sass']);
+	gulp.watch('app/**/*.html', browserSync.reload);
+	gulp.watch('app/assets/scripts/**/*.js', ['scripts']);
+});
+
+// setup browser-sync server
+gulp.task('browserSync', function(){
+
+	browserSync.init({
+		port: 9000,
+		server: {
+			baseDir: ['.tmp','app']
+		},
+	})
+
+});
+
+
+/****** 
+** Build Tasks 
+******/
+
 // useref combines assets into a single file after piping through minifiers based on file extension
 gulp.task('useref', function(){
 
-	return gulp.src('app/*.html')
+	return gulp.src('.tmp/*.html')
 		.pipe(useref({
 				searchPath:['.tmp', 'app']
 			}))
@@ -75,9 +154,8 @@ gulp.task('useref', function(){
 
 });
 
-// copies fonts folder -- uncomment if serving custom fonts, and add to build task below
+// copies fonts folder
 gulp.task('fonts', function() {
-
 	return gulp.src('app/assets/fonts/**/*')
 		.pipe(gulp.dest('dist/fonts'));
 
@@ -127,36 +205,4 @@ gulp.task('clean', function() {
 		runSequence('clean:dist', 'clean:cache')
 
 });
-
-// setup browser-sync server
-gulp.task('browserSync', function(){
-
-	browserSync.init({
-		port: 9000,
-		server: {
-			baseDir: ['.tmp','app']
-		},
-	})
-
-});
-
-// serve dev site
-// TODO -- do I need this? What's the diff btw this and my 'watch' task?
-gulp.task('serve', function(){
-
-	runSequence(['sass', 'scripts', 'browserSync', 'watch']);
-
-});
-
-
-// build production site
-gulp.task('build', function(){
-
-	console.log('building dist');
-
-	// Note -- runsequence runs tasks separated by comma one-by-one, tasks in [] will be run at the same time
-	runSequence('clean', 'sass',['useref', 'images', 'fonts', 'extras']);
-
-});
-
 

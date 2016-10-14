@@ -9,6 +9,7 @@ Loosely, initially based on [this tutorial](https://css-tricks.com/gulp-for-begi
 * Preprocesses styles (sass)
 * Lints your JS (gulp-eslint)
 * Optimizes images (imageoptim)
+* Templates your templates with Pug (formerly Jade)
 * bunch of other great things -- take a look at gulpfile.js
 
 ## Usage

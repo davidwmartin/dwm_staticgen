@@ -2,7 +2,9 @@
 
 ## Unreleased: 
 
-* none
+*Master currently unstable -- changing how the views are handled / where the site serves from*
+
+* Add "pug" (formerly Jade) for view templating
 
 ## [0.0.1]
 

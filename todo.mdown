@@ -1,8 +1,9 @@
 # TODO 
 
-## Publish
+## Publishing
 
 * licensing 
+* Include ideal directory structure in readme
 
 ## Development
 
@@ -11,8 +12,10 @@
 
 ### HTML
 
-* HMTL templating
+* **Move contents of index.html to partials for consumption by templating engine**
+
 * gulp-modernizer
+* ensure gulp-data implementation with pug works
 
 ### Gulp Config
 
