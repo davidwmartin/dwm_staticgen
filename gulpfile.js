@@ -97,19 +97,20 @@ gulp.task('lint', function(){
 
 gulp.task('pug', function(){
 	gulp.src('app/views/**/*.pug')
-		.pipe(data(function(){
-			// add data via json file
-			// TODO -- ensure the below works, I'm winging it here. 
-			return require('data/**/*.json');
-		}))
+		// .pipe(data(function(){
+		// 	// add data via json file
+		// 	// TODO -- ensure the below works, I'm winging it here. 
+		// 	return require('data/**/*.json');
+		// }))
 		.pipe(pug({}))
-		.pipe(gulp.dest('.tmp/'));
-});
+		.pipe(gulp.dest('.tmp/'))
 
-// 
+		.pipe(browserSync.reload({
+			stream: 	true
+		}));
+});
 // 
 // NOTE -- useref gets views from .tmp for build
-// 
 // 
 
 
@@ -121,6 +122,7 @@ gulp.task('pug', function(){
 gulp.task('watch', function(){
 	gulp.watch('app/assets/scss/**/*.scss', ['sass']);
 	gulp.watch('app/**/*.html', browserSync.reload);
+	gulp.watch('app/views/**/*.pug', ['pug']);
 	gulp.watch('app/assets/scripts/**/*.js', ['scripts']);
 });
 

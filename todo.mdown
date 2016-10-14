@@ -12,8 +12,6 @@
 
 ### HTML
 
-* **Move contents of index.html to partials for consumption by templating engine**
-
 * gulp-modernizer
 * ensure gulp-data implementation with pug works
 
