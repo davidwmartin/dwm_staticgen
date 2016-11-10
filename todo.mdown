@@ -9,15 +9,18 @@
 
 ### Assets
 * css linting?
+* add bower_components to scss search path (js also?)
 
 ### HTML
 
+* **missing meta description tag**
 * gulp-modernizer
 
 ### Gulp Config
 
+* **for serve tast -- should start server after pug task completes**
+* watch files in /data ?
 * autoprefix after usemin concat for greater control over external-asset prefixing?
-
 * Check Out:
 	- [gulp changed](https://www.npmjs.com/package/gulp-changed)
 	- [gulp load plugins](https://www.npmjs.com/package/gulp-load-plugins)
