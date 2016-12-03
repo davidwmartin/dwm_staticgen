@@ -1,6 +1,12 @@
 # Changelog
 
 ## Unreleased:
+* Allow pug to fail w/o stopping server task
+* Watch .tmp/**/*.html for changes, reload browser
+* Added default meta description tag
+
+## [0.0.3]
+* *forthcoming*
 
 ## [0.0.2]
 

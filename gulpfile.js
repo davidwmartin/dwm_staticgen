@@ -101,17 +101,17 @@ gulp.task('pug', function(){
 			// add data via json file
 			return require('./data/content.json');
 		}))
-		.pipe(pug())
+		.pipe(pug({pretty:true}))
+		// TODO -- better way to handle error logging? noise / notification?
+		.on('error', function(err){
+			console.log(err);
+		})
+		// NOTE -- useref gets views from .tmp for build
 		.pipe(gulp.dest('.tmp/'))
-
 		.pipe(browserSync.reload({
 			stream: 	true
 		}));
 });
-// 
-// NOTE -- useref gets views from .tmp for build
-// 
-
 
 /****** 
 ** server tasks 
@@ -120,9 +120,10 @@ gulp.task('pug', function(){
 // configure watch task
 gulp.task('watch', function(){
 	gulp.watch('app/assets/styles/**/*.scss', ['sass']);
-	gulp.watch('app/**/*.html', browserSync.reload);
 	gulp.watch('app/views/**/*.pug', ['pug']);
 	gulp.watch('app/assets/scripts/**/*.js', ['scripts']);
+	// TODO -- is it redundant to watch for html file changes?
+	gulp.watch('.tmp/**/*.html', browserSync.reload);
 });
 
 // setup browser-sync server
@@ -131,7 +132,7 @@ gulp.task('browserSync', function(){
 	browserSync.init({
 		port: 9000,
 		server: {
-			baseDir: ['.tmp','app']
+			baseDir: ['.tmp','app', '.']
 		},
 	})
 
@@ -147,7 +148,8 @@ gulp.task('useref', function(){
 
 	return gulp.src('.tmp/*.html')
 		.pipe(useref({
-				searchPath:['.tmp', 'app']
+				// TODO -- do I need 'app' in the search path here?
+				searchPath:['.tmp', 'app', '.']
 			}))
 		.pipe(gulpIf('*.js', uglify()))
 		.pipe(gulpIf('*.css', cssnano()))

@@ -12,13 +12,10 @@
 * add bower_components to scss search path (js also?)
 
 ### HTML
-
-* **missing meta description tag**
 * gulp-modernizer
 
 ### Gulp Config
 
-* **for serve tast -- should start server after pug task completes**
 * watch files in /data ?
 * autoprefix after usemin concat for greater control over external-asset prefixing?
 * Check Out:
@@ -39,4 +36,3 @@
 
 * build fails if there are no style rules to compile (minor bug as this won't really ever happen)
 * does lint task trigger scripts task? causing the latter to run twice in certain cases? (not huge bug, but annoying)
-* server cuts out on pug error
