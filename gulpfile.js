@@ -132,7 +132,7 @@ gulp.task('browserSync', function(){
 	browserSync.init({
 		port: 9000,
 		server: {
-			baseDir: ['.tmp','app', '.']
+			baseDir: ['.tmp','app', 'bower_components']
 		},
 	})
 
@@ -149,7 +149,7 @@ gulp.task('useref', function(){
 	return gulp.src('.tmp/*.html')
 		.pipe(useref({
 				// TODO -- do I need 'app' in the search path here?
-				searchPath:['.tmp', 'app', '.']
+				searchPath:['.tmp', 'app', 'bower_components']
 			}))
 		.pipe(gulpIf('*.js', uglify()))
 		.pipe(gulpIf('*.css', cssnano()))

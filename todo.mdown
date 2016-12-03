@@ -24,7 +24,7 @@
 	- [gulp rsync](https://www.npmjs.com/package/gulp-rsync)
 * gzip dist assets?
 
-## Beyond Gulp
+### Beyond Gulp
 
 * Bower
 	- style dependencies (dwmframe and normalize)

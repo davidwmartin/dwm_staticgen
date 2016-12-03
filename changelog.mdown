@@ -1,12 +1,14 @@
 # Changelog
 
 ## Unreleased:
+**NONE**
+
+## [0.0.3]
+
 * Allow pug to fail w/o stopping server task
 * Watch .tmp/**/*.html for changes, reload browser
 * Added default meta description tag
-
-## [0.0.3]
-* *forthcoming*
+* Add "bower_components" to search path for server and useref tasks
 
 ## [0.0.2]
 
