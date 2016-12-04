@@ -10,7 +10,6 @@
 ### Assets
 * css linting?
 * add bower_components to scss search path
-* add coffee-script compiler?
 * all sourcemaps to same directory? ("/dist/maps" or something) (gulp 4 does sourcemaps automatically...)
 
 ### HTML
