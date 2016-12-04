@@ -2,7 +2,7 @@
 
 A simple static website generator that utilizes npm & gulp. 
 
-Loosely, initially based on [this tutorial](https://css-tricks.com/gulp-for-beginners/), has since evolved. 
+Initially based on [this tutorial](https://css-tricks.com/gulp-for-beginners/), has since evolved. 
 
 ## Overview
 

@@ -1,7 +1,7 @@
 # Changelog
 
 ## Unreleased:
-**NONE**
+* working on adding coffeescript to build process
 
 ## [0.0.3]
 

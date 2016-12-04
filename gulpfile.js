@@ -18,7 +18,8 @@ var gulp = require('gulp'),
 		sourcemaps = require('gulp-sourcemaps'), 
 		eslint = require('gulp-eslint'),
 		pug = require('gulp-pug'), 
-		data = require('gulp-data')
+		data = require('gulp-data'),
+		coffee = require('gulp-coffee')
 ;
 
 
@@ -41,7 +42,7 @@ gulp.task('build', function(){
 	console.log('building dist');
 
 	// Note -- runsequence runs tasks separated by comma one-by-one, tasks in [] will be run at the same time
-	runSequence('clean', 'sass',['useref', 'images', 'fonts', 'extras']);
+	runSequence('clean', 'sass', 'pug', 'scripts', ['useref', 'images', 'fonts', 'extras']);
 
 });
 
@@ -67,6 +68,15 @@ gulp.task('sass', function(){
 			stream: 	true
 		}));
 
+});
+
+// Compile any coffeescript
+gulp.task('coffee', function(){
+	return gulp.src('app/assets/scripts/**/*.coffee')
+		.pipe(sourcemaps.init())
+		.pipe(coffee())
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('.tmp/scripts'))
 });
 
 // grab js files, sourcemap them, output to tmp directory
@@ -121,6 +131,7 @@ gulp.task('pug', function(){
 gulp.task('watch', function(){
 	gulp.watch('app/assets/styles/**/*.scss', ['sass']);
 	gulp.watch('app/views/**/*.pug', ['pug']);
+	gulp.watch('app/assets/scripts/**/*.coffee', ['coffee']);
 	gulp.watch('app/assets/scripts/**/*.js', ['scripts']);
 	// TODO -- is it redundant to watch for html file changes?
 	gulp.watch('.tmp/**/*.html', browserSync.reload);

@@ -9,13 +9,15 @@
 
 ### Assets
 * css linting?
-* add bower_components to scss search path (js also?)
+* add bower_components to scss search path
+* add coffee-script compiler?
+* all sourcemaps to same directory? ("/dist/maps" or something) (gulp 4 does sourcemaps automatically...)
 
 ### HTML
 * gulp-modernizer
 
 ### Gulp Config
-
+* **Upgrade to gulp 4**
 * watch files in /data ?
 * autoprefix after usemin concat for greater control over external-asset prefixing?
 * Check Out:
