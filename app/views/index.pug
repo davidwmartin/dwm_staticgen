@@ -6,9 +6,11 @@ html
 		meta(charset="utf-8")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 		meta(name="description" content="Default Meta Description")
-		//- build:css styles/style.css
+		
+		//- NOTE -- make sure useref blocks (build: ) use the appropriate type of comments -- they must be present in compiled .html file for useref to work
+		// build:css styles/style.css
 		link(rel="stylesheet", type="text/css", href="styles/style.css")
-		//- endbuild
+		// endbuild
 
 	body
 		.main-content
@@ -23,8 +25,8 @@ html
 			r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
 			ga('create','UA-XXXXX-X');ga('send','pageview');
 
-		//- build:js scripts/main.min.js
+		// build:js scripts/main.min.js
 		script(type="text/javascript", src="scripts/main.js")
-		//- endbuild
+		// endbuild
 		
 

@@ -11,7 +11,7 @@
 * css linting?
 * add bower_components to scss search path
 * all sourcemaps to same directory? ("/dist/maps" or something) (gulp 4 does sourcemaps automatically...)
-* should scripts and styles be in /assets? dist currently outputs them to a folder outside of assets...so implementation is inconsistent
+* *should scripts and styles be in /assets? dist currently outputs them to a folder outside of assets...so implementation is inconsistent (different structures from app/ to .tmp/ to dist/ -- problematic*
 
 ### HTML
 * gulp-modernizer
