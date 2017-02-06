@@ -1,0 +1,32 @@
+doctype html
+html
+	head
+		block title
+			title Default Site Title
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		meta(name="description" content="Default Meta Description")
+		
+		//- NOTE -- make sure useref blocks (build: ) use the appropriate type of comments -- they must be present in compiled .html file for useref to work
+		// build:css styles/style.css
+		link(rel="stylesheet", type="text/css", href="styles/style.css")
+		// endbuild
+
+	body
+		.main-content
+			block content
+
+		//- Google Analytics: change UA-XXXXX-X to be your site's ID.
+		script.
+			(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+			function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+			e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+			e.src='https://www.google-analytics.com/analytics.js';
+			r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+			ga('create','UA-XXXXX-X');ga('send','pageview');
+
+		// build:js scripts/main.min.js
+		script(type="text/javascript", src="scripts/main.js")
+		// endbuild
+		
+
