@@ -58,7 +58,9 @@ gulp.task('sass', function(){
 	return gulp.src('app/assets/styles/**/*.+(scss|sass)')
 
 		.pipe(sourcemaps.init())
-		.pipe(sass().on('error', sass.logError))
+		.pipe(sass({
+			includePaths:'bower_components'
+		}).on('error', sass.logError))
 		.pipe(autoprefixer({
 			browsers:['last 2 versions']
 		}))
