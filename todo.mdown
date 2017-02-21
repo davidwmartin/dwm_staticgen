@@ -14,7 +14,8 @@
 * css linting?
 * add bower_components to scss search path
 * all sourcemaps to same directory? ("/dist/maps" or something) (gulp 4 does sourcemaps automatically...)
-* Image task handling of other image types (e.g. .gif) -- may not make it through build process
+* Image task handling of other image types (e.g. .gif) these -- may not make it through build process
+* Image cropping / processing (https://www.npmjs.com/package/gulp-image-resize -- imageMagick)
 
 ### HTML
 * gulp-modernizer
@@ -28,6 +29,9 @@
 	- [gulp load plugins](https://www.npmjs.com/package/gulp-load-plugins)
 	- [gulp rsync](https://www.npmjs.com/package/gulp-rsync)
 * gzip dist assets?
+* restructure gulp file for better readability and to allow projects to register their own tasks w/o overwriting core tasks
+	 - [easy](https://blog.simpleblend.net/gulp-organization-structure/)
+	 - [two methods](http://macr.ae/article/splitting-gulpfile-multiple-files.html)
 
 ### Beyond Gulp
 
