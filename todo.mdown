@@ -20,6 +20,12 @@
 ### HTML
 * gulp-modernizer
 
+### SEO 
+* xml sitemap
+	- https://rapiddg.com/blog/calling-rest-api-nodejs-script
+* meta tags and such in template file
+
+
 ### Gulp Config
 * **Upgrade to gulp 4**
 * watch files in /data ?
