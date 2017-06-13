@@ -59,7 +59,7 @@ gulp.task('sass', function(){
 
 		.pipe(sourcemaps.init())
 		.pipe(sass({
-			includePaths:'bower_components'
+			includePaths:'node_modules'
 		}).on('error', sass.logError))
 		.pipe(autoprefixer({
 			browsers:['last 2 versions']
@@ -145,7 +145,7 @@ gulp.task('browserSync', function(){
 	browserSync.init({
 		port: 9000,
 		server: {
-			baseDir: ['.tmp','app', 'bower_components']
+			baseDir: ['.tmp','app']
 		},
 	})
 
@@ -162,7 +162,7 @@ gulp.task('useref', function(){
 	return gulp.src('.tmp/*.html')
 		.pipe(useref({
 				// TODO -- do I need 'app' in the search path here?
-				searchPath:['.tmp', 'app', 'bower_components']
+				searchPath:['.tmp', 'app']
 			}))
 		.pipe(gulpIf('*.js', uglify()))
 		.pipe(gulpIf('*.css', cssnano()))
