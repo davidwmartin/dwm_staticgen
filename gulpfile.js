@@ -55,7 +55,7 @@ gulp.task('build', function(){
 // styles
 gulp.task('sass', function(){
 
-	return gulp.src('app/assets/styles/**/*.+(scss|sass)')
+	return gulp.src('app/styles/**/*.+(scss|sass)')
 
 		.pipe(sourcemaps.init())
 		.pipe(sass({
@@ -74,7 +74,7 @@ gulp.task('sass', function(){
 
 // Compile any coffeescript
 gulp.task('coffee', function(){
-	return gulp.src('app/assets/scripts/**/*.coffee')
+	return gulp.src('app/scripts/**/*.coffee')
 		.pipe(sourcemaps.init())
 		.pipe(coffee())
 		.pipe(sourcemaps.write())
@@ -84,7 +84,7 @@ gulp.task('coffee', function(){
 // grab js files, sourcemap them, output to tmp directory
 gulp.task('scripts', ['lint'], function(){
 
-	return gulp.src('app/assets/scripts/**/*.js')
+	return gulp.src('app/scripts/**/*.js')
 		.pipe(sourcemaps.init())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('.tmp/scripts'))
@@ -131,10 +131,10 @@ gulp.task('pug', function(){
 
 // configure watch task
 gulp.task('watch', function(){
-	gulp.watch('app/assets/styles/**/*.scss', ['sass']);
+	gulp.watch('app/styles/**/*.scss', ['sass']);
 	gulp.watch('app/views/**/*.pug', ['pug']);
-	gulp.watch('app/assets/scripts/**/*.coffee', ['coffee']);
-	gulp.watch('app/assets/scripts/**/*.js', ['scripts']);
+	gulp.watch('app/scripts/**/*.coffee', ['coffee']);
+	gulp.watch('app/scripts/**/*.js', ['scripts']);
 	// TODO -- is it redundant to watch for html file changes?
 	gulp.watch('.tmp/**/*.html', browserSync.reload);
 });
@@ -172,7 +172,7 @@ gulp.task('useref', function(){
 
 // copies fonts folder
 gulp.task('fonts', function() {
-	return gulp.src('app/assets/fonts/**/*')
+	return gulp.src('app/fonts/**/*')
 		.pipe(gulp.dest('dist/fonts'));
 
 })
@@ -180,7 +180,7 @@ gulp.task('fonts', function() {
 // imagemin processes image files
 gulp.task('images', function(){
 	
-	return gulp.src('app/assets/images/**/*.+(png|jpg|jpeg|giv|svg)')
+	return gulp.src('app/images/**/*.+(png|jpg|jpeg|giv|svg)')
 		.pipe(cache(imagemin({
 				// gif options
 				interlaced: true,

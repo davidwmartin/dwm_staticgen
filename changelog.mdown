@@ -3,6 +3,10 @@
 ## Unreleased:
 * working on adding coffeescript to build process
 
+## [0.0.4]
+* see commits
+* flatten app/ directory (no more /assets/ dir)
+
 ## [0.0.3]
 
 * Allow pug to fail w/o stopping server task
