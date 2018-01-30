@@ -132,7 +132,7 @@ gulp.task('pug', function(){
 // configure watch task
 gulp.task('watch', function(){
 	gulp.watch('app/styles/**/*.scss', ['sass']);
-	gulp.watch('app/views/**/*.pug', ['pug']);
+	gulp.watch('app/views/**/*', ['pug']);
 	gulp.watch('app/scripts/**/*.coffee', ['coffee']);
 	gulp.watch('app/scripts/**/*.js', ['scripts']);
 	// TODO -- is it redundant to watch for html file changes?
