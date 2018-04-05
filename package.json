@@ -18,5 +18,7 @@
     "gulp-useref": "^3.1.2",
     "run-sequence": "^1.2.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "dwmframe": "git+https://github.com/davidwmartin/dwmframe.git"
+  }
 }

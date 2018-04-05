@@ -1,1 +1,23 @@
-// Main style manifest
+//////// Main style manifest
+
+//Declare Variable Overrides Here:
+
+// Normalize css reset (required for dwmframe below)
+@import "normalize-scss/sass/normalize/import-now";
+
+
+// dwmframe CSS framework
+@import "dwmframe/variables";
+
+@import "dwmframe/core/modular_scale";
+@import "dwmframe/core/grid";
+@import "dwmframe/core/layout-defaults";
+@import "dwmframe/core/typography";
+
+@import "dwmframe/core/buttons";
+@import "dwmframe/core/forms";
+@import "dwmframe/core/nav";
+
+//Modules -- Uncomment to use:
+// @import "dwmframe/modules/writing";
+// @import "dwmframe/modules/wordpress";
