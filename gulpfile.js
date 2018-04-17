@@ -143,7 +143,9 @@ gulp.task('watch', function(){
 gulp.task('browserSync', function(){
 
 	browserSync.init({
+		open: false,
 		port: 9000,
+		tunnel: 'weswesweswes'
 		server: {
 			baseDir: ['.tmp','app']
 		},
