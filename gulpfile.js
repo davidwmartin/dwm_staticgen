@@ -19,7 +19,8 @@ var gulp = require('gulp'),
 		eslint = require('gulp-eslint'),
 		pug = require('gulp-pug'), 
 		data = require('gulp-data'),
-		coffee = require('gulp-coffee')
+		coffee = require('gulp-coffee'),
+		svgEmbed = require('gulp-embed-svg'),
 ;
 
 
@@ -118,6 +119,10 @@ gulp.task('pug', function(){
 		.on('error', function(err){
 			console.log(err);
 		})
+		.pipe(svgEmbed({
+			root: './app/images/icons',
+			selectors: '.inline-svg'
+		}))
 		// NOTE -- useref gets views from .tmp for build
 		.pipe(gulp.dest('.tmp/'))
 		.pipe(browserSync.reload({
