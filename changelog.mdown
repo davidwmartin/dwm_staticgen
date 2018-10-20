@@ -1,7 +1,9 @@
 # Changelog
 
-## Unreleased:
-* working on adding coffeescript to build process
+## [0.2.2]
+* added svg-embed plugin
+
+<!-- # TODO -- missing a few versions here-->
 
 ## [0.1.0]
 * flatten app/ directory (no more /assets/ dir)
